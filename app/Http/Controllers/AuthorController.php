@@ -41,27 +41,35 @@ class AuthorController extends Controller
 
     public function showOne(Author $author)
     {
-        //
+        $author = Author::find($author->id);
+        if (!$author) {
+            return response()->json([
+                'success' => false,
+                'message' => 'No se pudo listar el Autor'
+            ]);
+        }
+        return response()->json([
+            'success' => true,
+            'data' => $author
+        ]);
     }
 
     public function update(Request $request, Author $author)
     {
+        $author->name = $request->name;
+        $author->save();
         if (!$author) {
             return response()->json([
                 'success' => false,
-                'message' => 'Autor no existe'
+                'message' => 'No se pudo actualizar el Autor'
             ]);
         }
-    
-        $author->update([
-            'name' => $request->input('name')
-        ]);
-    
         return response()->json([
             'message' => 'Autor actualizado correctamente',
             'data' => $author
         ]);
     }
+
 
     public function destroy(Author $author)
     {
