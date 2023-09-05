@@ -56,6 +56,12 @@ class AuthorController extends Controller
 
     public function update(Request $request, Author $author)
     {
+        if (!$request->has('name')) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Inserte el nuevo nombre del Autor'
+            ]);
+        }
         $author->name = $request->name;
         $author->save();
         if (!$author) {
