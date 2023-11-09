@@ -19,16 +19,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/author', 'App\Http\Controllers\AuthorController@index');
+Route::get('/author/{author}', 'App\Http\Controllers\AuthorController@showOne');
 Route::post('/author', 'App\Http\Controllers\AuthorController@store');
 Route::put('/author/{author}', 'App\Http\Controllers\AuthorController@update');
 Route::put('/author/delete/{author}', 'App\Http\Controllers\AuthorController@destroy');
-Route::get('/author/{author}', 'App\Http\Controllers\AuthorController@showOne');
 
 Route::get('/manga', 'App\Http\Controllers\MangaController@index');
+Route::get('/manga/{manga}', 'App\Http\Controllers\MangaController@showOne');
 Route::post('/manga', 'App\Http\Controllers\MangaController@store');
 Route::put('/manga/{manga}', 'App\Http\Controllers\MangaController@update');
 Route::put('/manga/delete/{manga}', 'App\Http\Controllers\MangaController@destroy');
-Route::get('/manga/{manga}', 'App\Http\Controllers\MangaController@showOne');
 
 Route::get('/poster', 'App\Http\Controllers\PosterController@index');
 Route::post('/poster', 'App\Http\Controllers\PosterController@store');

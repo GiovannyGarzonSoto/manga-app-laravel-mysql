@@ -62,6 +62,13 @@ class AuthorController extends Controller
                 'message' => 'Inserte el nuevo nombre del Autor'
             ]);
         }
+        $isAuthorExist = Author::find($author->id);
+        if(!$isAuthorExist) {
+            return response()->json([
+                'success' => false,
+                'message' => 'No existe el Autor'
+            ]);
+        }
         $author->name = $request->name;
         $author->save();
         if (!$author) {
