@@ -67,7 +67,7 @@ class PosterController extends Controller
      */
     public function update(Request $request, Poster $poster)
     {
-        //
+        // 
     }
 
     /**
